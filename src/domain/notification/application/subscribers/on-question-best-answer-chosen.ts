@@ -37,6 +37,5 @@ export class OnQuestionBestAnswerChosen implements EventHandler {
           .concat('...')}" foi escolhida pelo autor`
       })
     }
-    console.log(answer)
   }
 }
