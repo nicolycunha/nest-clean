@@ -1,7 +1,10 @@
-import 'dotenv/config'
+import { config } from 'dotenv'
 import { PrismaClient } from '@prisma/client'
 import { randomUUID } from 'node:crypto'
 import { execSync } from 'node:child_process'
+
+config({ path: '.env', override: true })
+config({ path: '.env.test', override: true })
 
 vi.setConfig({ hookTimeout: 60000 }) // 60s
 const prisma = new PrismaClient()
