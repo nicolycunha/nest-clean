@@ -10,6 +10,7 @@ import { z } from 'zod'
 import { AnswerPresenter } from '@/infra/http/presenters/answer-presenter'
 import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-question-comments'
 import { CommentPresenter } from '@/infra/http/presenters/comment-presenter'
+import { CommentWithAuthorPresenter } from '@/infra/http/presenters/comment-with-author-presenter'
 
 const pageQueryParamSchema = z
   .string()
@@ -40,8 +41,8 @@ export class FetchQuestionCommentsController {
       throw new BadRequestException()
     }
 
-    const { questionComments } = result.value
+    const { comments } = result.value
 
-    return { questionComments: questionComments.map(CommentPresenter.toHTTP) }
+    return { comments: comments.map(CommentWithAuthorPresenter.toHTTP) }
   }
 }
