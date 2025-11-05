@@ -6,7 +6,7 @@ import { JwtService } from '@nestjs/jwt'
 import { Test } from '@nestjs/testing'
 import request from 'supertest'
 import { StudentFactory } from 'test/factories/make-student'
-import { AttachmentFactory } from 'test/factories/make.attachment'
+import { AttachmentFactory } from 'test/factories/make-attachment'
 
 describe('Create question (E2E)', () => {
   let app: INestApplication

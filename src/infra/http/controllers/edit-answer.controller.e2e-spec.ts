@@ -9,7 +9,7 @@ import { AnswerFactory } from 'test/factories/make-answer'
 import { AnswerAttachmentFactory } from 'test/factories/make-answer-attachment'
 import { QuestionFactory } from 'test/factories/make-question'
 import { StudentFactory } from 'test/factories/make-student'
-import { AttachmentFactory } from 'test/factories/make.attachment'
+import { AttachmentFactory } from 'test/factories/make-attachment'
 
 describe('Edit answer (E2E)', () => {
   let app: INestApplication

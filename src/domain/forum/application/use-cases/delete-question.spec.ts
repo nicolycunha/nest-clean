@@ -1,23 +1,31 @@
-import { describe, it } from 'vitest'
-import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
 import { DeleteQuestionUseCase } from './delete-question'
+import { InMemoryQuestionsRepository } from 'test/repositories/in-memory-questions-repository'
 import { makeQuestion } from 'test/factories/make-question'
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { NotAllowedError } from '@/core/errors/not-allowed-error'
-import { InMemoryQuestionAttachmentsRepository } from '../../../../../test/repositories/in-memory-question-attachments-repository'
-import { makeQuestionAttachment } from '../../../../../test/factories/make-question-attachment'
+import { InMemoryQuestionAttachmentsRepository } from 'test/repositories/in-memory-question-attachments-repository'
+import { makeQuestionAttachment } from 'test/factories/make-question-attachment'
+import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
+import { InMemoryStudentsRepository } from 'test/repositories/in-memory-students-repository'
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository
 let inMemoryQuestionAttachmentsRepository: InMemoryQuestionAttachmentsRepository
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
+let inMemoryStudentsRepository: InMemoryStudentsRepository
 let sut: DeleteQuestionUseCase
 
-describe('Delete Question Use Case', () => {
+describe('Delete Question', () => {
   beforeEach(() => {
     inMemoryQuestionAttachmentsRepository =
       new InMemoryQuestionAttachmentsRepository()
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
+    inMemoryStudentsRepository = new InMemoryStudentsRepository()
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
-      inMemoryQuestionAttachmentsRepository
+      inMemoryQuestionAttachmentsRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository
     )
+
     sut = new DeleteQuestionUseCase(inMemoryQuestionsRepository)
   })
 
@@ -66,7 +74,7 @@ describe('Delete Question Use Case', () => {
       authorId: 'author-2'
     })
 
-    expect(result.isLeft()).toBeTruthy()
+    expect(result.isLeft()).toBe(true)
     expect(result.value).toBeInstanceOf(NotAllowedError)
   })
 })

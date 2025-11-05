@@ -7,7 +7,7 @@ import { Test } from '@nestjs/testing'
 import request from 'supertest'
 import { QuestionFactory } from 'test/factories/make-question'
 import { StudentFactory } from 'test/factories/make-student'
-import { AttachmentFactory } from 'test/factories/make.attachment'
+import { AttachmentFactory } from 'test/factories/make-attachment'
 
 describe('Answer question (E2E)', () => {
   let app: INestApplication

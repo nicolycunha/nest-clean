@@ -8,7 +8,7 @@ import request from 'supertest'
 import { QuestionFactory } from 'test/factories/make-question'
 import { QuestionAttachmentFactory } from 'test/factories/make-question-attachment'
 import { StudentFactory } from 'test/factories/make-student'
-import { AttachmentFactory } from 'test/factories/make.attachment'
+import { AttachmentFactory } from 'test/factories/make-attachment'
 
 describe('Edit question (E2E)', () => {
   let app: INestApplication
